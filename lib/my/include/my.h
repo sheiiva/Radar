@@ -20,6 +20,7 @@
 
     #define SUCCESS 0
     #define FAILURE 84
+    #define ERROR   -1
 
     void*   my_memset(void *s, int c, size_t n);
     ssize_t my_putchar(char c, int fd);

@@ -1,6 +1,6 @@
 /*
 ** Description:
-** Error Handling
+** Error Handling Headers
 **
 ** Corentin COUTRET-ROZET
 ** https://github.com/sheiiva/Radar
