@@ -16,6 +16,6 @@ char *my_strdup(const char *s)
 
     if (!new)
         return (NULL);
-    memset(new, '\0', len+1);
+    my_memset(new, '\0', len + 1);
     return (my_strcpy(new, s));
 }
