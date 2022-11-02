@@ -21,9 +21,9 @@ override CFLAGS 	+=	-W -Wall -Werror -Wextra $(INCLUDES)
 override LDFLAGS 	+=
 override LDLIBS 	+=
 
-
 SRC			=	my/my_putchar.c		\
 				my/my_strcpy.c		\
+				my/my_strcmp.c		\
 				my/my_strdup.c		\
 				my/my_strlen.c		\
 

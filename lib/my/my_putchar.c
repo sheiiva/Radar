@@ -7,7 +7,7 @@
 **
 */
 
-#include <unistd.h>
+#include "my.h"
 
 ssize_t my_putchar(char c, int fd)
 {
