@@ -9,9 +9,19 @@
 
 #include "system.h"
 
-void removeAircraft(t_aircraft *aircraft)
+void deleteAircraft(t_aircraft *aircraft)
 {
     free(aircraft);
+}
+
+void deleteAircrafts(t_aircraft **aircrafts)
+{
+    size_t i = 0;
+
+    while (aircrafts[i]) {
+        deleteAircraft(aircrafts[i]);
+        i += 1;
+    }
 }
 
 t_aircraft *createAircraft(sfVector2f initPos, sfVector2f landingPos,

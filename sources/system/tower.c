@@ -9,9 +9,19 @@
 
 #include "system.h"
 
-void removeTower(t_tower *tower)
+void deleteTower(t_tower *tower)
 {
     free(tower);
+}
+
+void deleteTowers(t_tower **towers)
+{
+    size_t i = 0;
+
+    while (towers[i]) {
+        deleteTower(towers[i]);
+        i += 1;
+    }
 }
 
 t_tower *createTower(sfVector2f pos, int rad)
