@@ -21,11 +21,12 @@
     #define SUCCESS 0
     #define FAILURE 84
 
+    void*   my_memset(void *s, int c, size_t n);
     ssize_t my_putchar(char c, int fd);
+    ssize_t my_putstr(const char *str, int fd);
     int     my_strcmp(const char *s1, const char *s2);
     char*   my_strcpy(char *dest, const char *src);
     char*   my_strdup(const char *s);
     size_t  my_strlen(char const *str);
-    void*   my_memset(void *s, int c, size_t n);
 
 #endif /* !MY_H_ */

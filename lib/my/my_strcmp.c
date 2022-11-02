@@ -18,5 +18,7 @@ int my_strcmp(const char *s1, const char *s2)
             return (FAILURE);
         i += 1;
     }
+    if (s1[i] != s2[i])
+        return (FAILURE);
     return (SUCCESS);
 }

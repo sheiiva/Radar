@@ -21,11 +21,10 @@ override CFLAGS 	+=	-W -Wall -Werror -Wextra -I$(INCLUDE_PATH)
 override LDFLAGS 	+=	-L$(LIB_PATH)
 override LDLIBS 	+=	-lmy -lcsfml-audio -lcsfml-graphics -lcsfml-system -lcsfml-window
 
-
 SRC			=	main.c				\
+				inputHandling/inputHandling.c		\
 
 OBJ 		= 	$(SRC:.c=.o)
-
 
 NAME 		= 	$(ROOT_PATH)Radar
 

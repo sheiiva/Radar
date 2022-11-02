@@ -23,6 +23,7 @@ override LDLIBS 	+=
 
 SRC			=	my/my_memset.c		\
 				my/my_putchar.c		\
+				my/my_putstr.c		\
 				my/my_strcpy.c		\
 				my/my_strcmp.c		\
 				my/my_strdup.c		\

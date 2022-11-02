@@ -7,7 +7,11 @@
 **
 */
 
-int main()
+#include "error.h"
+
+int main(int ac, char **av)
 {
-    return (0);
+    if (checkInputArgs(ac, av) == FAILURE)
+        return (FAILURE);
+    return (SUCCESS);
 }
