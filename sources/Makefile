@@ -25,8 +25,9 @@ SRC			=	main.c				\
 				inputHandling/getContentFromFile.c	\
 				inputHandling/inputHandling.c		\
 				inputHandling/parsing.c				\
-				system/aircraft.c					\
-				system/tower.c						\
+				system/aircraft.c				\
+				system/system.c					\
+				system/tower.c					\
 
 OBJ 		= 	$(SRC:.c=.o)
 

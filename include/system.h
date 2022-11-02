@@ -33,12 +33,17 @@
         t_tower ** towers;
     } t_system;
 
+    t_system *initSystem(size_t aircraftNumber, size_t towerNumber);
+    void deleteSystem(t_system *system);
+
     t_aircraft *createAircraft(sfVector2f initPos, sfVector2f landingPos, sfVector2f pos, size_t speed, size_t delay);
     t_aircraft **createAircraftArray(size_t aircraftNumber);
-    void removeAircraft(t_aircraft *aircraft);
+    void deleteAircraft(t_aircraft *aircraft);
+    void deleteAircrafts(t_aircraft **aircrafts);
 
     t_tower *createTower(sfVector2f pos, int rad);
     t_tower **createTowerArray(size_t towerNumber);
-    void removeTower(t_tower *tower);
+    void deleteTower(t_tower *tower);
+    void deleteTowers(t_tower **towers);
 
 #endif /* !SYSTEM_H_ */

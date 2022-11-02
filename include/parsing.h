@@ -10,7 +10,9 @@
 #ifndef PARSING_H_
     #define PARSING_H_
 
-    char *parsing(const char *path);
+    #include "system.h"
+
+    t_system *parsing(const char *path);
     char *getContentFromFile(const char* path);
 
 #endif /* !PARSING_H_ */

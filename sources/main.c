@@ -10,15 +10,17 @@
 #include "macro.h"
 #include "error.h"
 #include "parsing.h"
+#include "system.h"
 
 int main(int ac, char **av)
 {
-    char *content = NULL;
+    t_system *system = NULL;
     int argsValidation = checkInputArgs(ac, av);
 
     if (argsValidation != SUCCESS)
         return (argsValidation == HELP ? SUCCESS : FAILURE);
-    if (!(content = parsing(av[1])))
+    if (!(system = parsing(av[1])))
         return (FAILURE);
+    deleteSystem(system);
     return (SUCCESS);
 }
