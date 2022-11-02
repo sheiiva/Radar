@@ -30,6 +30,7 @@ int checkInputArgs(int ac, char **av)
     } else if (my_strcmp(av[1], "-h") == SUCCESS) {
         printHelp();
         return (HELP);
+    } else {
+        return (SUCCESS);
     }
-    return (SUCCESS);
 }
