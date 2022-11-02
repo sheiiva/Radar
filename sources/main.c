@@ -7,11 +7,14 @@
 **
 */
 
+#include "macro.h"
 #include "error.h"
 
 int main(int ac, char **av)
 {
-    if (checkInputArgs(ac, av) == FAILURE)
-        return (FAILURE);
+    int argsValidation = checkInputArgs(ac, av);
+
+    if (argsValidation != SUCCESS)
+        return (argsValidation == HELP ? SUCCESS : FAILURE);
     return (SUCCESS);
 }
