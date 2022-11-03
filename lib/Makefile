@@ -21,13 +21,15 @@ override CFLAGS 	+=	-W -Wall -Werror -Wextra $(INCLUDES)
 override LDFLAGS 	+=
 override LDLIBS 	+=
 
-SRC			=	my/my_memset.c		\
-				my/my_putchar.c		\
-				my/my_putstr.c		\
-				my/my_strcpy.c		\
-				my/my_strcmp.c		\
-				my/my_strdup.c		\
-				my/my_strlen.c		\
+SRC			=	my/my_memset.c				\
+				my/my_nstrlen.c				\
+				my/my_putchar.c				\
+				my/my_putstr.c				\
+				my/my_strcpy.c				\
+				my/my_strcmp.c				\
+				my/my_strdup.c				\
+				my/my_strlen.c				\
+				my/my_strtowordarray.c		\
 
 OBJ 		= 	$(SRC:.c=.o)
 
