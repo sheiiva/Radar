@@ -12,6 +12,7 @@
 
     #include "system.h"
 
+    void cleanString(char *string);
     t_system *parsing(const char *path);
     char *getContentFromFile(const char* path);
 
