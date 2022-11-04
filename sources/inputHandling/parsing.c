@@ -58,7 +58,7 @@ t_system *fillSystem(t_system *system, char **array, size_t aircraftNumber, size
     }
     return (system);
 }
-#include <stdio.h>
+
 t_system *parsing(const char *path)
 {
     char **array = NULL;

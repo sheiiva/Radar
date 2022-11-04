@@ -10,10 +10,10 @@
 #ifndef SYSTEM_H_
     #define SYSTEM_H_
 
-    #include <SFML/System.h>
-
     #include <stddef.h>
     #include <stdlib.h>
+
+    #include "graphic.h"
 
     typedef struct s_aircraft {
         sfVector2f initPos;
@@ -31,6 +31,7 @@
     typedef struct s_system {
         t_aircraft **aircrafts;
         t_tower ** towers;
+        t_graphic *graphics;
     } t_system;
 
     t_system *initSystem(size_t aircraftNumber, size_t towerNumber);

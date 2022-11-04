@@ -26,6 +26,8 @@ SRC			=	main.c				\
 				inputHandling/getContentFromFile.c	\
 				inputHandling/inputHandling.c		\
 				inputHandling/parsing.c				\
+				manager/graphicManager.c			\
+				manager/windowManager.c				\
 				system/aircraft.c				\
 				system/system.c					\
 				system/tower.c					\
