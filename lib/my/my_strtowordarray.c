@@ -8,7 +8,7 @@
 */
 
 #include "my.h"
-#include <stdio.h>
+
 size_t count_n(const char *str, char n)
 {
     size_t i = 0;

@@ -18,10 +18,13 @@ void deleteAircrafts(t_aircraft **aircrafts)
 {
     size_t i = 0;
 
+    if (!aircrafts)
+        return;
     while (aircrafts[i]) {
         deleteAircraft(aircrafts[i]);
         i += 1;
     }
+    free(aircrafts);
 }
 
 t_aircraft *createAircraft(sfVector2f initPos, sfVector2f landingPos,

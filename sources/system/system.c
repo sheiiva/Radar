@@ -25,7 +25,7 @@ t_system *initSystem(size_t aircraftNumber, size_t towerNumber)
     if (!system)
         return (NULL);
     if (!(system->aircrafts = createAircraftArray(aircraftNumber))
-        || (system->towers = createTowerArray(towerNumber))) {
+        || !(system->towers = createTowerArray(towerNumber))) {
             deleteSystem(system);
             return (NULL);
     }

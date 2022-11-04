@@ -18,10 +18,13 @@ void deleteTowers(t_tower **towers)
 {
     size_t i = 0;
 
+    if (!towers)
+        return;
     while (towers[i]) {
         deleteTower(towers[i]);
         i += 1;
     }
+    free(towers);
 }
 
 t_tower *createTower(sfVector2f pos, int rad)
