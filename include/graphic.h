@@ -16,7 +16,7 @@
     #include <SFML/System.h>
 
     #define TIMEREFRESH 0.1
-    #include <stdio.h>      
+
     enum _GAMESTATE {
         QUIT=       -1,
         GAMESCENE=  0,

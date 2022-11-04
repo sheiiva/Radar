@@ -22,6 +22,7 @@ override LDFLAGS 	+=	-L$(LIB_PATH)
 override LDLIBS 	+=	-lmy -lcsfml-audio -lcsfml-graphics -lcsfml-system -lcsfml-window
 
 SRC			=	main.c				\
+				radar.c				\
 				inputHandling/cleanString.c			\
 				inputHandling/getContentFromFile.c	\
 				inputHandling/inputHandling.c		\
