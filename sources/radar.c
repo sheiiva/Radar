@@ -13,11 +13,8 @@
 #include "system.h"
 #include "my.h"
 
-#include <stdio.h>
-
 int gameLoop(t_system *system, t_graphic *graphics)
 {
-    printf("%ld\n", system->aircrafts[0]->speed);
     /* Start the game loop */
     while (sfRenderWindow_isOpen(graphics->window->window)) {
         // /* Manage Event */

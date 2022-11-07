@@ -21,7 +21,7 @@ void displayWindow(sfRenderWindow* window, t_system *system)
     }
     i = 0;
     while (system->towers[i]) {
-        drawImage(window, system->aircrafts[i]->image);
+        drawImage(window, system->towers[i]->image);
         i += 1;
     }
     sfRenderWindow_display(window);
