@@ -8,9 +8,13 @@
 */
 
 #include "system.h"
+#include "image.h"
 
 void deleteAircraft(t_aircraft *aircraft)
 {
+    if (!aircraft)
+        return;
+    destroyImage(aircraft->image);
     free(aircraft);
 }
 
@@ -39,6 +43,7 @@ t_aircraft *createAircraft(sfVector2f initPos, sfVector2f landingPos,
     aircraft->pos = pos;
     aircraft->speed = speed;
     aircraft->delay = delay;
+    aircraft->image = NULL;
     return (aircraft);
 }
 

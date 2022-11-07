@@ -21,7 +21,7 @@ int gameLoop(t_system *system, t_graphic *graphics)
     /* Start the game loop */
     while (sfRenderWindow_isOpen(graphics->window->window)) {
         // /* Manage Event */
-        evenManager(graphics);
+        eventManager(graphics);
         if (graphics->state == QUIT) {
             return (SUCCESS);
         }
@@ -29,8 +29,8 @@ int gameLoop(t_system *system, t_graphic *graphics)
         clearWindow(graphics->window->window);
         // /* Process Event */
         // process(system, scenes);
-        // /* Display Screen */
-        // display(system->window->window, scenes[system->state]);
+        /* Display Screen */
+        displayWindow(graphics->window->window, system);
     }
     return (SUCCESS);
 }

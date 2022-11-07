@@ -23,12 +23,13 @@ override LDLIBS 	+=	-lmy -lcsfml-audio -lcsfml-graphics -lcsfml-system -lcsfml-w
 
 SRC			=	main.c				\
 				radar.c				\
-				events/eventManager.c			\
 				inputHandling/cleanString.c			\
 				inputHandling/getContentFromFile.c	\
 				inputHandling/inputHandling.c		\
 				inputHandling/parsing.c				\
+				manager/eventManager.c				\
 				manager/graphicManager.c			\
+				manager/imageManager.c				\
 				manager/windowManager.c				\
 				system/aircraft.c				\
 				system/system.c					\

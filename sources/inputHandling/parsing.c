@@ -10,6 +10,7 @@
 #include "my.h"
 #include "parsing.h"
 #include "system.h"
+#include "image.h"
 
 t_aircraft *parseAircraft(char **array)
 {
@@ -22,6 +23,7 @@ t_aircraft *parseAircraft(char **array)
     aircraft->pos = aircraft->initPos;
     aircraft->speed = atoi(array[4]);
     aircraft->delay = atoi(array[5]);
+    aircraft->image = createImage("assets/images/plane.png", aircraft->initPos);
     return (aircraft);
 }
 
@@ -33,6 +35,7 @@ t_tower *parseTower(char **array)
         return (NULL);
     tower->pos = (sfVector2f){atoi(array[0]), atoi(array[1])};
     tower->rad = atoi(array[2]);
+    tower->image = createImage("assets/images/tower.png", tower->pos);
     return (tower);
 }
 

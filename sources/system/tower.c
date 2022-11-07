@@ -8,9 +8,13 @@
 */
 
 #include "system.h"
+#include "image.h"
 
 void deleteTower(t_tower *tower)
 {
+    if (!tower)
+        return;
+    destroyImage(tower->image);
     free(tower);
 }
 
@@ -35,6 +39,7 @@ t_tower *createTower(sfVector2f pos, int rad)
         return (NULL);
     tower->pos = pos;
     tower->rad = rad;
+    tower->image = NULL;
     return (tower);
 }
 

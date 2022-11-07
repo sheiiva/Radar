@@ -23,7 +23,7 @@ void (*checkEvent[NUMEVENT])(t_graphic*) = {
     onClose
 };
 
-void evenManager(t_graphic *graphics)
+void eventManager(t_graphic *graphics)
 {
     int i = 0;
 

@@ -15,6 +15,8 @@
     #include <SFML/Graphics.h>
     #include <SFML/System.h>
 
+    #include "system.h"
+
     #define TIMEREFRESH 0.1
 
     enum _GAMESTATE {
@@ -42,6 +44,6 @@
     t_window*       initWindow();
 
     void clearWindow(sfRenderWindow* window);
-    void displayWindow(sfRenderWindow* window);
+    void displayWindow(sfRenderWindow* window, t_system *system);
 
 #endif /* !GRAPHIC_H_ */

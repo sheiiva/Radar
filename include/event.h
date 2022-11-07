@@ -11,9 +11,10 @@
     #define EVENT_H_
 
     #include "system.h"
+    #include "graphic.h"
 
     #define NUMEVENT    1
 
-    void evenManager(t_graphic *graphics);
+    void eventManager(t_graphic *graphics);
 
 #endif /* !EVENT_H_ */

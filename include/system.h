@@ -13,7 +13,7 @@
     #include <stddef.h>
     #include <stdlib.h>
 
-    #include "graphic.h"
+    #include "image.h"
 
     typedef struct s_aircraft {
         sfVector2f initPos;
@@ -21,17 +21,19 @@
         sfVector2f pos;
         size_t speed;
         size_t delay;
+        t_image *image;
     } t_aircraft;
 
     typedef struct s_tower {
         sfVector2f pos;
         int rad;
+        t_image *image;
     } t_tower;
 
     typedef struct s_system {
         t_aircraft **aircrafts;
         t_tower ** towers;
-        t_graphic *graphics;
+        t_image *background;
     } t_system;
 
     t_system *initSystem(size_t aircraftNumber, size_t towerNumber);

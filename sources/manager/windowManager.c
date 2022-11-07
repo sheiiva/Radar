@@ -9,10 +9,20 @@
 
 #include <stdlib.h>
 #include "graphic.h"
-
-void displayWindow(sfRenderWindow* window)
+    
+void displayWindow(sfRenderWindow* window, t_system *system)
 {
-    // drawScene(window, scene);
+    size_t i = 0;
+
+    while (system->aircrafts[i]) {
+        drawImage(window, system->aircrafts[i]->image);
+        i += 1;
+    }
+    i = 0;
+    while (system->towers[i]) {
+        drawImage(window, system->aircrafts[i]->image);
+        i += 1;
+    }
     sfRenderWindow_display(window);
 }
 
