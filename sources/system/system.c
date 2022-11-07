@@ -29,5 +29,6 @@ t_system *initSystem(size_t aircraftNumber, size_t towerNumber)
             deleteSystem(system);
             return (NULL);
     }
+    system->background = createImage("assets/images/background.png", (sfVector2f){0, 0});
     return (system);
 }

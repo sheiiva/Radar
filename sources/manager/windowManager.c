@@ -14,6 +14,7 @@ void displayWindow(sfRenderWindow* window, t_system *system)
 {
     size_t i = 0;
 
+    drawImage(window, system->background);
     while (system->aircrafts[i]) {
         drawImage(window, system->aircrafts[i]->image);
         i += 1;
