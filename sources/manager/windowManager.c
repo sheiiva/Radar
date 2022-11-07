@@ -10,6 +10,17 @@
 #include <stdlib.h>
 #include "graphic.h"
 
+void displayWindow(sfRenderWindow* window)
+{
+    // drawScene(window, scene);
+    sfRenderWindow_display(window);
+}
+
+void clearWindow(sfRenderWindow* window)
+{
+    sfRenderWindow_clear(window, sfBlack);
+}
+
 sfRenderWindow *createWindow(sfVideoMode mode)
 {
     return (sfRenderWindow_create(mode, "Radar", sfResize  | sfClose, NULL));

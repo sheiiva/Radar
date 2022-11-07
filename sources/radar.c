@@ -8,14 +8,30 @@
 */
 
 #include "macro.h"
+#include "event.h"
 #include "graphic.h"
 #include "system.h"
 #include "my.h"
 
+#include <stdio.h>
+
 int gameLoop(t_system *system, t_graphic *graphics)
 {
-    while (graphics->state != QUIT) {}
-    (void)system;
+    printf("%ld\n", system->aircrafts[0]->speed);
+    /* Start the game loop */
+    while (sfRenderWindow_isOpen(graphics->window->window)) {
+        // /* Manage Event */
+        evenManager(graphics);
+        if (graphics->state == QUIT) {
+            return (SUCCESS);
+        }
+        /* Clear the screen */
+        clearWindow(graphics->window->window);
+        // /* Process Event */
+        // process(system, scenes);
+        // /* Display Screen */
+        // display(system->window->window, scenes[system->state]);
+    }
     return (SUCCESS);
 }
 

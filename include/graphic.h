@@ -39,6 +39,9 @@
 
     sfRenderWindow* createWindow(sfVideoMode mode);
     void            destroyWindow(t_window *window);
-    t_window*      initWindow();
+    t_window*       initWindow();
+
+    void clearWindow(sfRenderWindow* window);
+    void displayWindow(sfRenderWindow* window);
 
 #endif /* !GRAPHIC_H_ */
