@@ -10,10 +10,7 @@
 #ifndef SYSTEM_H_
     #define SYSTEM_H_
 
-    #include <SFML/Audio.h>
-    #include <SFML/Window.h>
-    #include <SFML/Graphics.h>
-    #include <SFML/System.h>
+    #include "object.h"
 
     typedef struct s_SystemClass {
 
@@ -21,18 +18,17 @@
         Class base;
 
         /* Special Definition*/
-        int                 state;
+        int _status;
 
         /* Methods definitions*/
+        int (*__run__)(struct s_SystemClass*, int, char**);
     } SystemClass;
 
     extern const Class *System;
 
-    enum _GAMESTATE {
-        QUIT=       -1,
-        GAMESCENE=  0,
-    };
+    #define runSystem(r, ac, av) ((SystemClass*)r)->__run__(r, ac, av)
 
-    #define TIMEREFRESH 0.1
+    #define ERROR   84
+    #define SUCCESS 0
 
 #endif /* !SYSTEM_H_ */

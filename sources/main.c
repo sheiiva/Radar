@@ -10,10 +10,11 @@
 #include "new.h"
 #include "system.h"
 
-int main(void)
+int main(int ac, char **av)
 {
-    Object *system = new(System);
+    SystemClass* system = new(System);
+    int returnv = runSystem(system, ac, av);
 
     delete(system);
-    return (0);
+    return (returnv);
 }

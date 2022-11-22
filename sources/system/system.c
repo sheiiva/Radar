@@ -10,10 +10,29 @@
 #include "new.h"
 #include "system.h"
 
+#include "errorHandling.h"
+
+static int System_run(__UNUSED__ SystemClass *this, int ac, char **av)
+{
+    //CHECK INPUT
+    ErrorHandlingClass *errorHandling = new(ErrorHandling);
+
+    errorHandling->__run__(errorHandling, ac, av);
+    if (errorHandling->__getStatus__(errorHandling) != SUCCESS)
+        return (errorHandling->__getStatus__(errorHandling) == ERROR ? ERROR : SUCCESS);
+    delete(errorHandling);
+
+    //PARSE
+    //parse(av[1]);
+
+    //GAME.RUN()
+
+    return (0);
+}
+
 static void System_ctor(__UNUSED__ SystemClass *this, __UNUSED__ va_list *args)
 {
     // Initialize internal resources
-    this->state = GAMESCENE;
 
     printf("System()\n");
 }
@@ -40,8 +59,9 @@ static const SystemClass _description = {
         .__gt__ = NULL,
         .__lt__ = NULL
     },
-    .state = 0
+    ._status = 0,
     /* Methods definitions */
+    .__run__ = &System_run
 };
 
 const Class *System = (const Class *)&_description;
