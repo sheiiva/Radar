@@ -12,5 +12,8 @@
 
 int main(void)
 {
+    Object *system = new(System);
+
+    delete(system);
     return (0);
 }
