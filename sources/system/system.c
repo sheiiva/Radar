@@ -11,6 +11,7 @@
 #include "system.h"
 
 #include "errorHandling.h"
+#include "parser.h"
 
 static int System_run(__UNUSED__ SystemClass *this, int ac, char **av)
 {
@@ -20,12 +21,16 @@ static int System_run(__UNUSED__ SystemClass *this, int ac, char **av)
     errorHandling->__run__(errorHandling, ac, av);
     if (errorHandling->__getStatus__(errorHandling) != SUCCESS)
         return (errorHandling->__getStatus__(errorHandling) == ERROR ? ERROR : SUCCESS);
+
     delete(errorHandling);
-
     //PARSE
-    //parse(av[1]);
+    ParserClass *parser = new(Parser);
 
-    //GAME.RUN()
+    if (parser->__run__(parser, av[1]) == ERROR)
+        return (ERROR);
+
+    delete(parser);
+    //GAME
 
     return (SUCCESS);
 }
