@@ -19,6 +19,9 @@
 
     #define __UNUSED__ __attribute__ ((unused))
 
+    #define ERROR   84
+    #define SUCCESS 0
+
     typedef void Object;
     typedef void (*ctor_t)(Object *this, va_list *args);
     typedef void (*dtor_t)(Object *this);

@@ -7,6 +7,9 @@
 **
 */
 
+#include <string.h>
+#include <stdio.h>
+
 #include "errorHandling.h"
 
 static int ErrorHandling_getStatus(ErrorHandlingClass *this){return (this->_status);}
@@ -16,8 +19,16 @@ static int ErrorHandling_run(__UNUSED__ ErrorHandlingClass *this, __UNUSED__ int
 {
     printf("Checking inputs...\n");
 
-    printf("-> ok!\n");
-    return (0);
+    if (ac != 2) {
+        printf("-> ko!\n%s\n", HELP_MESSAGE);
+        return (ERROR);
+    } else if (strcmp(av[1], "-h") == SUCCESS) {
+        printf("%s\n", HELP_MESSAGE);
+        return (-1);
+    } else {
+        printf("-> ok!\n");
+        return (SUCCESS);
+    }
 }
 
 static void ErrorHandling_ctor(__UNUSED__ ErrorHandlingClass *this, __UNUSED__ va_list *args)

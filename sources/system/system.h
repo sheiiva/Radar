@@ -28,7 +28,4 @@
 
     #define runSystem(r, ac, av) ((SystemClass*)r)->__run__(r, ac, av)
 
-    #define ERROR   84
-    #define SUCCESS 0
-
 #endif /* !SYSTEM_H_ */

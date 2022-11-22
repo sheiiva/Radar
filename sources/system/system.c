@@ -27,7 +27,7 @@ static int System_run(__UNUSED__ SystemClass *this, int ac, char **av)
 
     //GAME.RUN()
 
-    return (0);
+    return (SUCCESS);
 }
 
 static void System_ctor(__UNUSED__ SystemClass *this, __UNUSED__ va_list *args)
