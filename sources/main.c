@@ -7,6 +7,8 @@
 **
 */
 
+#include "new.h"
+#include "system.h"
 
 int main(void)
 {
