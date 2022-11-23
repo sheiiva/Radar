@@ -8,19 +8,44 @@
 */
 
 #include "new.h"
+#include "array.h"
+#include "my.h"
 
 #include "parser.h"
 #include "file.h"
+#include "iEntity.h"
+#include "aircraft.h"
+#include "tower.h"
 
-static int Parser_run(__UNUSED__ ParserClass *this, char *filePath)
+static int Parser_run(__UNUSED__ ParserClass *this, char *filePath, Object **aircrafts, Object **towers)
 {
     printf("Parsing...\n");
 
+    size_t i = 0;
+    size_t a_i = 0;
+    size_t t_i = 0;
     FileClass *file = new(File, filePath);
     char *fileContent = readFile(file);
+    char **data = strtowordarray(fileContent, '\n');
 
-    printf("%s\n", fileContent);
+    // Create aircrafts array
+    *aircrafts = new(Array, count_n(fileContent, 'A'), IEntity);
+    // Create towers array
+    *towers = new(Array, count_n(fileContent, 'T'), IEntity);
 
+    while (data[i]) {
+        if (data[i][0] == 'A')
+            createAircraft(*aircrafts, a_i++, Aircraft, data[i]);
+        if (data[i][0] == 'T')
+            createTower(*towers, t_i++, Tower, data[i]);
+        i += 1;
+    }
+
+    free(fileContent);
+    delete(file);
+    freeArray(data);
+
+    printf("-> ok!\n");
     return (SUCCESS);
 }
 

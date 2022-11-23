@@ -12,9 +12,6 @@
 
 #include "errorHandling.h"
 
-static int ErrorHandling_getStatus(ErrorHandlingClass *this){return (this->_status);}
-static void ErrorHandling_setStatus(ErrorHandlingClass *this, int status){this->_status = status;}
-
 static int ErrorHandling_run(__UNUSED__ ErrorHandlingClass *this, __UNUSED__ int ac, __UNUSED__ char **av)
 {
     printf("Checking inputs...\n");
@@ -61,9 +58,6 @@ static const ErrorHandlingClass _description = {
         .__lt__ = NULL
     },
     ._status = 0,
-    /* Getter and Setters */
-    .__getStatus__ = &ErrorHandling_getStatus,
-    .__setStatus__ = &ErrorHandling_setStatus,
     /* Methods definitions */
     .__run__ = &ErrorHandling_run
 };

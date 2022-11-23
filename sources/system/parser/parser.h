@@ -19,10 +19,8 @@
 
         /* Special Definition*/
 
-        /* Getter and Setters */
-
         /* Methods definitions*/
-        int (*__run__)(struct s_ParserClass*, char*);
+        int (*__run__)(struct s_ParserClass*, char*, Object**, Object**);
     } ParserClass;
 
     extern const Class *Parser;

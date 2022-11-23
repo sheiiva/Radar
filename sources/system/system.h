@@ -19,6 +19,8 @@
 
         /* Special Definition*/
         int _status;
+        Object *_aircrafts;
+        Object *_towers;
 
         /* Methods definitions*/
         int (*__run__)(struct s_SystemClass*, int, char**);

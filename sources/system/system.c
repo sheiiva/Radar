@@ -13,24 +13,27 @@
 #include "errorHandling.h"
 #include "parser.h"
 
-static int System_run(__UNUSED__ SystemClass *this, int ac, char **av)
+#include "aircraft.h"
+#include "array.h"
+
+static int System_run(SystemClass *this, int ac, char **av)
 {
-    //CHECK INPUT
+    // INPUT CHECKING
     ErrorHandlingClass *errorHandling = new(ErrorHandling);
 
     errorHandling->__run__(errorHandling, ac, av);
-    if (errorHandling->__getStatus__(errorHandling) != SUCCESS)
-        return (errorHandling->__getStatus__(errorHandling) == ERROR ? ERROR : SUCCESS);
+    if (errorHandling->_status != SUCCESS)
+        return (errorHandling->_status == ERROR ? ERROR : SUCCESS);
 
     delete(errorHandling);
-    //PARSE
+    // PARSING
     ParserClass *parser = new(Parser);
 
-    if (parser->__run__(parser, av[1]) == ERROR)
+    if (parser->__run__(parser, av[1], &this->_aircrafts, &this->_towers) == ERROR)
         return (ERROR);
 
     delete(parser);
-    //GAME
+    // GAME
 
     return (SUCCESS);
 }
@@ -42,9 +45,11 @@ static void System_ctor(__UNUSED__ SystemClass *this, __UNUSED__ va_list *args)
     printf("System()\n");
 }
 
-static void System_dtor(__UNUSED__ SystemClass *this)
+static void System_dtor(SystemClass *this)
 {
     // Release internal resources
+    delete(this->_aircrafts);
+    delete(this->_towers);
 
     printf("~System()\n");
 }
@@ -65,6 +70,8 @@ static const SystemClass _description = {
         .__lt__ = NULL
     },
     ._status = 0,
+    ._aircrafts = NULL,
+    ._towers = NULL,
     /* Methods definitions */
     .__run__ = &System_run
 };

@@ -67,7 +67,6 @@ static const FileClass _description = {
     },
     ._size = 0,
     ._fd = 0,
-    /* Getter and Setters */
     /* Methods definitions */
     .__read__ = &File_read
 };

@@ -23,12 +23,8 @@
         Class base;
 
         /* Special Definition*/
-        long _size;
-        int _fd;
-
-        /* Getter and Setters */
-        int (*__getSize__)(struct s_FileClass*);
-        void (*__setSize__)(struct s_FileClass*, int);
+        long    _size;
+        int     _fd;
 
         /* Methods definitions*/
         char* (*__read__)(struct s_FileClass*);

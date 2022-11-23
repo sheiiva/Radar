@@ -20,10 +20,6 @@
         /* Special Definition*/
         int _status;
 
-        /* Getter and Setters */
-        int (*__getStatus__)(struct s_ErrorHandlingClass*);
-        void (*__setStatus__)(struct s_ErrorHandlingClass*, int);
-
         /* Methods definitions*/
         int (*__run__)(struct s_ErrorHandlingClass*, int, char**);
     } ErrorHandlingClass;
