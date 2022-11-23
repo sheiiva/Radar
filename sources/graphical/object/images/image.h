@@ -24,19 +24,8 @@
         Class base;
 
         /* Special Definition*/
-        char*       filePath;
         sfTexture*  texture;
         sfSprite*   sprite;
-
-        /* GET/SET*/
-        void        (*__setScale__)(struct s_ImageClass*, sfVector2f);
-        sfVector2f  (*__getScale__)(const struct s_ImageClass*);
-        void        (*__setRotation__)(struct s_ImageClass*, float);
-        float       (*__getRotation__)(const struct s_ImageClass*);
-        void        (*__setPosition__)(struct s_ImageClass*, sfVector2f);
-        sfVector2f  (*__getPosition__)(const struct s_ImageClass*);
-        void        (*__setRect__)(struct s_ImageClass*, sfIntRect);
-        sfIntRect   (*__getRect__)(const struct s_ImageClass*);
 
         /* Methods definitions */
         void (*__display__)(const struct s_ImageClass*, sfRenderWindow*);
@@ -49,17 +38,17 @@
     #define displayImage(i, w)          ((ImageClass*)i)->__display__(i, w)
 
     /* GET/SET */
-    #define setImageScale(i, s)         ((ImageClass*)i)->__setScale__(i, s)
-    #define getImageScale(i)            ((ImageClass*)i)->__getScale__(i)
+    #define setImageScale(i, s)         sfSprite_setScale(((ImageClass*)i)->sprite, s)
+    #define getImageScale(i)            sfSprite_getScale(((ImageClass*)i)->sprite)
 
-    #define setImageRotation(i, a)      ((ImageClass*)i)->__setRotation__(i, a)
-    #define getImageRotation(i)         ((ImageClass*)i)->__getRotation__(i)
+    #define setImageRotation(i, a)      sfSprite_setRotation(((ImageClass*)i)->sprite, a)
+    #define getImageRotation(i)         sfSprite_getRotation(((ImageClass*)i)->sprite)
 
-    #define setImagePosition(i, p)      ((ImageClass*)i)->__setPosition__(i, p)
-    #define getImagePosition(i)         ((ImageClass*)i)->__getPosition__(i)
+    #define setImagePosition(i, p)      sfSprite_setPosition(((ImageClass*)i)->sprite, p)
+    #define getImagePosition(i)         sfSprite_getPosition(((ImageClass*)i)->sprite)
 
-    #define setImageRect(i, r)          ((ImageClass*)i)->__setRect__(i, r)
-    #define getImageRect(i)             ((ImageClass*)i)->__getRect__(i)
+    #define setImageRect(i, r)          sfSprite_setTextureRect(((ImageClass*)i)->sprite, r)
+    #define getImageRect(i)             sfSprite_getTextureRect(((ImageClass*)i)->sprite)
 
     /* OTHERS */
     #define degToRad(angleInDegrees) ((angleInDegrees) * M_PI / 180.0)
