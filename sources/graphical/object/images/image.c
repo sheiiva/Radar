@@ -11,7 +11,7 @@
 
 #include "image.h"
 
-static void Image_display(const ImageClass *this, sfRenderWindow *window)
+static void Image_draw(const ImageClass *this, sfRenderWindow *window)
 {
     sfRenderWindow_drawSprite(window, this->sprite, NULL);
 }
@@ -63,7 +63,7 @@ static const ImageClass _description = {
     .texture = NULL,
     .sprite = NULL,
     /* Methods definitions */
-    .__display__ = &Image_display
+    .__draw__ = &Image_draw
 };
 
 const Class *Image = (const Class *)&_description;

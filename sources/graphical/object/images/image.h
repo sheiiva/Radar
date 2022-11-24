@@ -28,14 +28,14 @@
         sfSprite*   sprite;
 
         /* Methods definitions */
-        void (*__display__)(const struct s_ImageClass*, sfRenderWindow*);
+        void (*__draw__)(const struct s_ImageClass*, sfRenderWindow*);
 
     } ImageClass;
 
     extern const Class *Image;
 
     /* METHODS */
-    #define displayImage(i, w)          ((ImageClass*)i)->__display__(i, w)
+    #define drawImage(i, w)          ((ImageClass*)i)->__draw__(i, w)
 
     /* GET/SET */
     #define setImageScale(i, s)         sfSprite_setScale(((ImageClass*)i)->sprite, s)

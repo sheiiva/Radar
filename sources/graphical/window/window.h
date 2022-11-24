@@ -23,8 +23,8 @@
         Class base;
 
         /* Special Definition*/
-        sfVideoMode mode;
-        sfRenderWindow* window;
+        sfVideoMode         _mode;
+        sfRenderWindow*     _window;
 
         /* Methods Pointers*/
         void    (*__clear__)(struct s_WindowClass*);
@@ -34,8 +34,8 @@
 
     extern const Class *Window;
 
-    #define clearWindow(c)           ((WindowClass*)c)->__clear__(c)
-    #define displayWindow(c)         ((WindowClass*)c)->__display__(c)
-    #define isWindowOpen(c)          ((WindowClass*)c)->__isOpen__(c)
+    #define clearWindow(w)           ((WindowClass*)w)->__clear__(w)
+    #define displayWindow(w)         ((WindowClass*)w)->__display__(w)
+    #define isWindowOpen(w)          ((WindowClass*)w)->__isOpen__(w)
 
 #endif /* !WINDOW_H_ */

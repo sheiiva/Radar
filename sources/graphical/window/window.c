@@ -13,29 +13,29 @@
 
 static sfBool Window_isOpen(WindowClass *this)
 {
-    return sfRenderWindow_isOpen(this->window);
+    return sfRenderWindow_isOpen(this->_window);
 }
 
 void Window_clear(WindowClass *this)
 {
-    sfRenderWindow_clear(this->window, sfBlack);
+    sfRenderWindow_clear(this->_window, sfBlack);
 }
 
 void Window_display(WindowClass *this)
 {
-    sfRenderWindow_display(this->window);
+    sfRenderWindow_display(this->_window);
 }
 
 static void Window_ctor(WindowClass *this, __UNUSED__ va_list *args)
 {
     // Initialize internal resources
-    this->mode = (sfVideoMode){1280, 800, 32};
-    this->window = sfRenderWindow_create(this->mode, "Radar", sfClose, NULL);
-    if (!this->window)
+    this->_mode = (sfVideoMode){1920, 1080, 32};
+    this->_window = sfRenderWindow_create(this->_mode, "Radar", sfClose, NULL);
+    if (!this->_window)
         raise("Cannot create window.");
 
-    sfRenderWindow_setMouseCursorVisible(this->window, sfFalse);
-    sfRenderWindow_setFramerateLimit(this->window, FRAMERATE);
+    sfRenderWindow_setMouseCursorVisible(this->_window, sfFalse);
+    sfRenderWindow_setFramerateLimit(this->_window, FRAMERATE);
 
     printf("Window()\n");
 }
@@ -43,8 +43,8 @@ static void Window_ctor(WindowClass *this, __UNUSED__ va_list *args)
 static void Window_dtor(WindowClass *this)
 {
     // Release internal resources
-    if (this->window)
-        sfRenderWindow_destroy(this->window);
+    if (this->_window)
+        sfRenderWindow_destroy(this->_window);
 
     printf("~Window()\n");
 }
@@ -64,7 +64,7 @@ static const WindowClass _description = {
         .__gt__ = NULL,
         .__lt__ = NULL
     },
-    .window = NULL,
+    ._window = NULL,
     /* Methods definitions */
     .__clear__ =    &Window_clear,
     .__display__ =  &Window_display,

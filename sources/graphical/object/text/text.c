@@ -25,7 +25,7 @@ static const sfFont *Text_getFont(const TextClass *this)
     return sfText_getFont(this->_text);
 }
 
-static void Text_display(TextClass *this, sfRenderWindow *window)
+static void Text_draw(TextClass *this, sfRenderWindow *window)
 {
     sfRenderWindow_drawText(window, this->_text, NULL);
 }
@@ -98,7 +98,7 @@ static const TextClass _description = {
     .__setFont__ = &Text_setFont,
     .__getFont__ = &Text_getFont,
     /* Methods definitions */
-    .__display__ = &Text_display,
+    .__draw__ = &Text_draw,
     .__mouseOnText__ = &Text_mouseOnText,
     .__clickOnText__ = &Text_clickOnText
 };

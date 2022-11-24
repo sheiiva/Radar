@@ -12,6 +12,7 @@
 
     #include "object.h"
 
+    #include "scene.h"
     #include "window.h"
 
     typedef struct s_SystemClass SystemClass;
@@ -22,7 +23,7 @@
         Class base;
 
         /* Special Definition*/
-        Object*         _scenes;
+        SceneClass*     _scene;
         WindowClass*    _window;
 
         /* Methods definitions*/

@@ -30,14 +30,14 @@
         const sfFont*   (*__getFont__)(const struct s_TextClass*);
 
         /* Methods definitions */
-        void (*__display__)(struct s_TextClass*, sfRenderWindow*);
+        void (*__draw__)(struct s_TextClass*, sfRenderWindow*);
         sfBool (*__mouseOnText__)(const struct s_TextClass*, const sfRenderWindow*);
         sfBool (*__clickOnText__)(const struct s_TextClass*, const sfRenderWindow*);
 
     } TextClass;
 
     /* METHODS */
-    #define displayText(t, w)   ((TextClass*)t)->__display__(t, w)
+    #define drawText(t, w)   ((TextClass*)t)->__draw__(t, w)
 
     /* GET/SET */
 
