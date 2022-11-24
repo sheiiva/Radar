@@ -3,7 +3,7 @@
 ** Scene structure
 **
 ** Corentin COUTRET-ROZET
-** https://github.com/sheiiva/DuckHunt
+** https://github.com/sheiiva/Radar
 **
 */
 
@@ -15,6 +15,7 @@
     #include "window.h"
     #include "image.h"
     #include "text.h"
+    #include "eventManager.h"
 
     typedef struct s_SystemClass SystemClass;
 
@@ -27,7 +28,7 @@
         Object*     _images;
         Object*     _texts;
 
-        // EventManagerClass* eventManager;
+        EventManagerClass* _eventManager;
 
         /* Methods definitions */
         void    (*__draw__)(struct s_SceneClass*, WindowClass*);

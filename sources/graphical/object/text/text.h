@@ -3,7 +3,7 @@
 ** Scene's Text structure
 **
 ** Corentin COUTRET-ROZET
-** https://github.com/sheiiva/DuckHunt
+** https://github.com/sheiiva/Radar
 **
 */
 

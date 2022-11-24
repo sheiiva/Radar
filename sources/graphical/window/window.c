@@ -3,18 +3,13 @@
 ** Window's class definition
 **
 ** Corentin COUTRET-ROZET
-** https://github.com/sheiiva/DuckHunt
+** https://github.com/sheiiva/Radar
 **
 */
 
 #include "raise.h"
 
 #include "window.h"
-
-static sfBool Window_isOpen(WindowClass *this)
-{
-    return sfRenderWindow_isOpen(this->_window);
-}
 
 void Window_clear(WindowClass *this)
 {
@@ -24,6 +19,16 @@ void Window_clear(WindowClass *this)
 void Window_display(WindowClass *this)
 {
     sfRenderWindow_display(this->_window);
+}
+
+static sfBool Window_isOpen(WindowClass *this)
+{
+    return sfRenderWindow_isOpen(this->_window);
+}
+
+void Window_close(WindowClass *this)
+{
+    sfRenderWindow_close(this->_window);
 }
 
 static void Window_ctor(WindowClass *this, __UNUSED__ va_list *args)
@@ -69,6 +74,7 @@ static const WindowClass _description = {
     .__clear__ =    &Window_clear,
     .__display__ =  &Window_display,
     .__isOpen__ =   &Window_isOpen,
+    .__close__ =   &Window_close,
 };
 
 const Class *Window = (const Class *)&_description;

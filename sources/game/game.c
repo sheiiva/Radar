@@ -11,11 +11,11 @@
 
 #include "game.h"
 
-static void Game_run(GameClass *this, __UNUSED__ SystemClass *system)
+static void Game_run(GameClass *this, SystemClass *system)
 {
     while (isWindowOpen(this->_window)) {
         clearWindow(this->_window);
-        //event
+        handleEvents(this->_scene->_eventManager, system);
         //process
         drawScene(this->_scene, this->_window);
         displayWindow(this->_window);

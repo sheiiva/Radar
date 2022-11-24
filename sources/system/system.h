@@ -13,6 +13,7 @@
     #include "object.h"
 
     #include "clock.h"
+    #include "game.h"
 
     typedef struct s_SystemClass {
 
@@ -23,6 +24,7 @@
         Object*         _aircrafts;
         Object*         _towers;
         ClockClass*     _clock;
+        GameClass*      _game;
 
         /* Methods definitions*/
         int (*__run__)(struct s_SystemClass*, int, char**);

@@ -3,7 +3,7 @@
 ** Window's structure
 **
 ** Corentin COUTRET-ROZET
-** https://github.com/sheiiva/DuckHunt
+** https://github.com/sheiiva/Radar
 **
 */
 
@@ -30,12 +30,14 @@
         void    (*__clear__)(struct s_WindowClass*);
         void    (*__display__)(struct s_WindowClass*);
         sfBool  (*__isOpen__)(struct s_WindowClass*);
+        void    (*__close__)(struct s_WindowClass*);
     } WindowClass;
 
     extern const Class *Window;
 
-    #define clearWindow(w)           ((WindowClass*)w)->__clear__(w)
-    #define displayWindow(w)         ((WindowClass*)w)->__display__(w)
-    #define isWindowOpen(w)          ((WindowClass*)w)->__isOpen__(w)
+    #define clearWindow(w)          ((WindowClass*)w)->__clear__(w)
+    #define displayWindow(w)        ((WindowClass*)w)->__display__(w)
+    #define isWindowOpen(w)         ((WindowClass*)w)->__isOpen__(w)
+    #define closeWindow(w)          ((WindowClass*)w)->__close__(w)
 
 #endif /* !WINDOW_H_ */

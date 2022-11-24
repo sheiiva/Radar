@@ -35,11 +35,11 @@ static int System_run(SystemClass *this, int ac, char **av)
 
     delete(parser);
     // GAME
-    GameClass *game = new(Game);
+    this->_game = new(Game);
 
-    runGame(game, this);
+    runGame(this->_game, this);
 
-    delete(game);
+    delete(this->_game);
     return (SUCCESS);
 }
 
@@ -78,6 +78,8 @@ static const SystemClass _description = {
     },
     ._aircrafts = NULL,
     ._towers = NULL,
+    ._clock = NULL,
+    ._game = NULL,
     /* Methods definitions */
     .__run__ = &System_run
 };

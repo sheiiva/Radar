@@ -3,7 +3,7 @@
 ** Scene's Interface class definition
 **
 ** Corentin COUTRET-ROZET
-** https://github.com/sheiiva/DuckHunt
+** https://github.com/sheiiva/Radar
 **
 */
 
@@ -31,6 +31,8 @@ static void Scene_ctor(SceneClass *this, __UNUSED__ va_list *args)
     /* Create texts Array */
     this->_texts = new(Array, TEXTNUMBER, Text);
 
+    this->_eventManager = new(EventManager);
+
     printf("Scene()\n");
 }
 
@@ -39,6 +41,7 @@ static void Scene_dtor(SceneClass *this)
     // Release internal resources
     delete(this->_images);
     delete(this->_texts);
+    delete(this->_eventManager);
 
     printf("~Scene()\n");
 }
