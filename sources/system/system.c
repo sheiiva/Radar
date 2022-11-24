@@ -10,6 +10,7 @@
 #include "new.h"
 #include "system.h"
 
+#include "game.h"
 #include "errorHandling.h"
 #include "parser.h"
 
@@ -34,7 +35,11 @@ static int System_run(SystemClass *this, int ac, char **av)
 
     delete(parser);
     // GAME
+    GameClass *game = new(Game);
 
+    runGame(game, this);
+
+    delete(game);
     return (SUCCESS);
 }
 
@@ -69,7 +74,6 @@ static const SystemClass _description = {
         .__gt__ = NULL,
         .__lt__ = NULL
     },
-    ._status = 0,
     ._aircrafts = NULL,
     ._towers = NULL,
     /* Methods definitions */

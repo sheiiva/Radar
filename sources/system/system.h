@@ -12,15 +12,16 @@
 
     #include "object.h"
 
+    #include "window.h"
+
     typedef struct s_SystemClass {
 
         /* Inheritance */
         Class base;
 
         /* Special Definition*/
-        int _status;
-        Object *_aircrafts;
-        Object *_towers;
+        Object*         _aircrafts;
+        Object*         _towers;
 
         /* Methods definitions*/
         int (*__run__)(struct s_SystemClass*, int, char**);
