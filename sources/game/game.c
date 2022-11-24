@@ -28,8 +28,6 @@ static void Game_ctor(GameClass *this, __UNUSED__ va_list *args)
     this->_scene = new(Scene);
     this->_window = new(Window);
 
-    // Initialize Scenes
-
     printf("Game()\n");
 }
 
