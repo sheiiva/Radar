@@ -46,6 +46,7 @@ static int System_run(SystemClass *this, int ac, char **av)
 static void System_ctor(__UNUSED__ SystemClass *this, __UNUSED__ va_list *args)
 {
     // Initialize internal resources
+    this->_clock = new(Clock);
 
     printf("System()\n");
 }
@@ -55,6 +56,7 @@ static void System_dtor(SystemClass *this)
     // Release internal resources
     delete(this->_aircrafts);
     delete(this->_towers);
+    delete(this->_clock);
 
     printf("~System()\n");
 }

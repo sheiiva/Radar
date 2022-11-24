@@ -12,7 +12,7 @@
 
     #include "object.h"
 
-    #include "window.h"
+    #include "clock.h"
 
     typedef struct s_SystemClass {
 
@@ -22,6 +22,7 @@
         /* Special Definition*/
         Object*         _aircrafts;
         Object*         _towers;
+        ClockClass*     _clock;
 
         /* Methods definitions*/
         int (*__run__)(struct s_SystemClass*, int, char**);
