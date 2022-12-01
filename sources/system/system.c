@@ -10,12 +10,13 @@
 #include "new.h"
 #include "system.h"
 
-#include "game.h"
 #include "errorHandling.h"
 #include "parser.h"
 
 #include "aircraft.h"
 #include "array.h"
+
+#include "game.h"
 
 static int System_run(SystemClass *this, int ac, char **av)
 {

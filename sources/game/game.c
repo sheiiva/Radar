@@ -8,8 +8,22 @@
 */
 
 #include "new.h"
+#include "array.h"
 
 #include "game.h"
+
+#include "aircraft.h"
+#include "tower.h"
+
+static void Game_display(GameClass *this, SystemClass *system)
+{
+    drawScene(this->_scene, this->_window);
+    for (size_t i = 0; i < len(system->_aircrafts); i++)
+        drawAircraft(getitem(system->_aircrafts, i), this->_window);
+    for (size_t i = 0; i < len(system->_towers); i++)
+        drawTower(getitem(system->_towers, i), this->_window);
+    displayWindow(this->_window);
+}
 
 static void Game_run(GameClass *this, SystemClass *system)
 {
@@ -17,8 +31,7 @@ static void Game_run(GameClass *this, SystemClass *system)
         clearWindow(this->_window);
         handleEvents(this->_scene->_eventManager, system);
         //process
-        drawScene(this->_scene, this->_window);
-        displayWindow(this->_window);
+        displayGame(this, system);
     }
 }
 
@@ -58,7 +71,8 @@ static const GameClass _description = {
     ._scene = NULL,
     ._window = NULL,
     /* Methods definitions */
-    .__run__ = &Game_run
+    .__run__ = &Game_run,
+    .__display__ = &Game_display
 };
 
 const Class *Game = (const Class *)&_description;

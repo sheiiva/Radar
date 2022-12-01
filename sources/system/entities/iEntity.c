@@ -23,8 +23,9 @@ static const IEntityClass _description = {
         .__eq__ = NULL,
         .__gt__ = NULL,
         .__lt__ = NULL
-    }
+    },
     /* Methods definitions */
+    .__draw__ = NULL
 };
 
 const Class *IEntity = (const Class *)&_description;

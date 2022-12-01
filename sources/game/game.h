@@ -14,8 +14,7 @@
 
     #include "scene.h"
     #include "window.h"
-
-    typedef struct s_SystemClass SystemClass;
+    #include "system.h"
 
     typedef struct s_GameClass {
 
@@ -28,10 +27,12 @@
 
         /* Methods definitions*/
         void (*__run__)(struct s_GameClass*, SystemClass*);
+        void (*__display__)(struct s_GameClass*, SystemClass*);
     } GameClass;
 
     extern const Class *Game;
 
     #define runGame(r, s) ((GameClass*)r)->__run__(r, s)
+    #define displayGame(r, s) ((GameClass*)r)->__display__(r, s)
 
 #endif /* !GAME_H_ */

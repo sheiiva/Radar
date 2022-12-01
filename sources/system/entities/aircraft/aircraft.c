@@ -9,8 +9,15 @@
 
 #include <stdlib.h>
 
+#include "new.h"
+
 #include "my.h"
 #include "aircraft.h"
+
+static void Aircraft_draw(IEntityClass *this, WindowClass* window)
+{
+    drawImage(this->_image, window->_window);
+}
 
 static void Aircraft_ctor(AircraftClass *this, va_list *args)
 {
@@ -29,6 +36,8 @@ static void Aircraft_ctor(AircraftClass *this, va_list *args)
     this->_speed = atol(data[5]);
     this->_delay = atol(data[6]);
 
+    this->base._image = new(Image, AIRCRAFT_IPATH, this->_initPos, NULL);
+
     freeArray(data);
     printf("Aircraft()\n");
 }
@@ -36,6 +45,7 @@ static void Aircraft_ctor(AircraftClass *this, va_list *args)
 static void Aircraft_dtor(__UNUSED__ AircraftClass *this)
 {
     // Release internal resources
+    delete(this->base._image);
 
     printf("~Aircraft()\n");
 }
@@ -55,13 +65,16 @@ static const AircraftClass _description = {
         .__eq__ = NULL,
         .__gt__ = NULL,
         .__lt__ = NULL
-        }
+        },
+        ._image = NULL,
+        /* Methods */
+        .__draw__ = &Aircraft_draw
     },
     ._initPos = {0, 0},
     ._landingPos = {0, 0},
     ._pos = {0, 0},
     ._speed = 0,
-    ._delay = 0
+    ._delay = 0,
     /* Methods definitions */
 };
 

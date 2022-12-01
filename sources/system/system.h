@@ -15,6 +15,8 @@
     #include "clock.h"
     #include "game.h"
 
+    typedef struct s_GameClass GameClass;
+
     typedef struct s_SystemClass {
 
         /* Inheritance */
@@ -24,7 +26,7 @@
         Object*         _aircrafts;
         Object*         _towers;
         ClockClass*     _clock;
-        GameClass*      _game;
+        GameClass *     _game;
 
         /* Methods definitions*/
         int (*__run__)(struct s_SystemClass*, int, char**);

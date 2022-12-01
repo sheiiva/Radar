@@ -14,10 +14,18 @@
 
     #include "object.h"
 
+    #include "image.h"
+    #include "window.h"
+
     typedef struct s_IEntityClass {
 
         /* Inheritance */
         Class base;
+
+        ImageClass *_image;
+
+        /* Methods */
+        void (*__draw__)(struct s_IEntityClass*, WindowClass*);
 
     } IEntityClass;
 

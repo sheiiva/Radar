@@ -9,8 +9,15 @@
 
 #include <string.h>
 
+#include "new.h"
+
 #include "my.h"
 #include "tower.h"
+
+static void Tower_draw(IEntityClass *this, WindowClass* window)
+{
+    drawImage(this->_image, window->_window);
+}
 
 static void Tower_ctor(TowerClass *this, va_list *args)
 {
@@ -26,6 +33,8 @@ static void Tower_ctor(TowerClass *this, va_list *args)
     this->_pos = (sfVector2f){atof(data[1]), atof(data[2])};
     this->_rad = atol(data[3]);
 
+    this->base._image = new(Image, TOWER_IPATH, this->_pos, NULL);
+
     freeArray(data);
     printf("Tower()\n");
 }
@@ -33,6 +42,7 @@ static void Tower_ctor(TowerClass *this, va_list *args)
 static void Tower_dtor(__UNUSED__ TowerClass *this)
 {
     // Release internal resources
+    delete(this->base._image);
 
     printf("~Tower()\n");
 }
@@ -52,7 +62,10 @@ static const TowerClass _description = {
         .__eq__ = NULL,
         .__gt__ = NULL,
         .__lt__ = NULL
-        }
+        },
+        ._image = NULL,
+        /* Methods */
+        .__draw__ = &Tower_draw
     },
     ._pos = {0, 0},
     ._rad = 0
