@@ -29,6 +29,27 @@ static void Aircraft_draw(IEntityClass *this, WindowClass* window)
     drawImage(this->_image, window->_window);
 }
 
+static void Aircraft_setOrientation(AircraftClass *this)
+{
+    sfVector2f d = {this->_landingPos.x - this->_initPos.x,
+                    this->_landingPos.y - this->_initPos.y};
+    double m = sqrt(pow(d.x, 2) + pow(d.y, 2));
+    float rangle = 0;
+
+    if (d.x == 0) {
+        if (d.y > 0)
+            rangle = M_PI_2;
+        else
+            rangle = 3*M_PI_2;
+    } else if (d.x < 0)
+        rangle = -M_PI - atan(d.y / -d.x);
+    else
+        rangle = atan(d.y / d.x);
+
+    this->_dir = (sfVector2f){d.x / m, d.y / m};
+    setImageRotation(this->base._image, radToDeg(rangle) - DEFAULT_ANGLE);
+}
+
 static void Aircraft_ctor(AircraftClass *this, va_list *args)
 {
     char **data = strtowordarray(va_arg(*args, char*), ' ');
@@ -46,13 +67,8 @@ static void Aircraft_ctor(AircraftClass *this, va_list *args)
     this->_speed = atol(data[5]);
     this->_delay = atol(data[6]);
     // Compute direction
-    sfVector2f d = {this->_landingPos.x - this->_initPos.x,
-                    this->_landingPos.y - this->_initPos.y};
-    double u = sqrt(pow(d.x, 2) + pow(d.y, 2));
-
-    this->_dir = (sfVector2f){d.x / u, d.y / u};
-
     this->base._image = new(Image, AIRCRAFT_IPATH, this->_initPos, NULL);
+    this->__setOrientation__(this);
 
     freeArray(data);
     printf("Aircraft()\n");
@@ -93,7 +109,8 @@ static const AircraftClass _description = {
     ._speed = 0,
     ._delay = 0,
     /* Methods definitions */
-    .__move__ = &Aircraft_move
+    .__move__ = &Aircraft_move,
+    .__setOrientation__ = &Aircraft_setOrientation
 };
 
 const Class *Aircraft = (const Class *)&_description;

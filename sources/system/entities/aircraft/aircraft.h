@@ -28,6 +28,7 @@
 
         /* Methods definitions*/
         void (*__move__)(struct s_AircraftClass*);
+        void (*__setOrientation__)(struct s_AircraftClass*);
     } AircraftClass;
 
     extern const Class *Aircraft;
@@ -37,5 +38,7 @@
     #define moveAircraft(a)         ((AircraftClass*)a)->__move__(a)
 
     #define AIRCRAFT_IPATH "assets/images/plane.png"
+
+    #define DEFAULT_ANGLE -45
 
 #endif /* !AIRCRAFT_H_ */
