@@ -17,9 +17,20 @@
 
 static void Aircraft_move(AircraftClass *this)
 {
+    if (this->_flying == false)
+        return;
     // Update position
     this->_pos.x += this->_dir.x * this->_speed;
     this->_pos.y += this->_dir.y * this->_speed;
+
+    // Check for landing
+    int currentDist = sqrt(pow(this->_pos.x - this->_initPos.x, 2)  + pow(this->_pos.y - this->_initPos.y, 2));
+    int landingDist = sqrt(pow(this->_landingPos.x - this->_initPos.x, 2)  + pow(this->_landingPos.y - this->_initPos.y, 2));
+    if (currentDist > landingDist) {
+        this->_flying = false;
+        return;
+    }
+
     // Update image position
     setImagePosition(this->base._image, this->_pos);
 }
@@ -66,6 +77,7 @@ static void Aircraft_ctor(AircraftClass *this, va_list *args)
     this->_pos = this->_initPos;
     this->_speed = atol(data[5]);
     this->_delay = atol(data[6]);
+    this->_flying = true;
     // Compute direction
     this->base._image = new(Image, AIRCRAFT_IPATH, this->_initPos, NULL);
     this->__setOrientation__(this);
@@ -108,6 +120,7 @@ static const AircraftClass _description = {
     ._dir = {0, 0},
     ._speed = 0,
     ._delay = 0,
+    ._flying = false,
     /* Methods definitions */
     .__move__ = &Aircraft_move,
     .__setOrientation__ = &Aircraft_setOrientation

@@ -25,6 +25,7 @@
         sfVector2f  _dir;
         size_t      _speed;
         size_t      _delay;
+        bool        _flying;
 
         /* Methods definitions*/
         void (*__move__)(struct s_AircraftClass*);

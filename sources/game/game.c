@@ -24,10 +24,12 @@ static void Game_process(__UNUSED__ GameClass *this, SystemClass *system)
 static void Game_display(GameClass *this, SystemClass *system)
 {
     drawScene(this->_scene, this->_window);
-    for (size_t i = 0; i < len(system->_aircrafts); i++)
-        drawAircraft(getitem(system->_aircrafts, i), this->_window);
     for (size_t i = 0; i < len(system->_towers); i++)
         drawTower(getitem(system->_towers, i), this->_window);
+    for (size_t i = 0; i < len(system->_aircrafts); i++) {
+        if (((AircraftClass*)getitem(system->_aircrafts, i))->_flying)
+            drawAircraft(getitem(system->_aircrafts, i), this->_window);
+    }
     displayWindow(this->_window);
 }
 
