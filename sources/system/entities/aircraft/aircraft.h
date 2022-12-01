@@ -22,17 +22,19 @@
         sfVector2f  _initPos;
         sfVector2f  _landingPos;
         sfVector2f  _pos;
+        sfVector2f  _dir;
         size_t      _speed;
         size_t      _delay;
 
         /* Methods definitions*/
+        void (*__move__)(struct s_AircraftClass*);
     } AircraftClass;
 
     extern const Class *Aircraft;
 
-    #define createAircraft(a, ...) ((Container*)a)->__setitem__(a, __VA_ARGS__)
-
-    #define drawAircraft(a, w) ((IEntityClass*)a)->__draw__(a, w)
+    #define createAircraft(a, ...)  ((Container*)a)->__setitem__(a, __VA_ARGS__)
+    #define drawAircraft(a, w)      ((IEntityClass*)a)->__draw__(a, w)
+    #define moveAircraft(a)         ((AircraftClass*)a)->__move__(a)
 
     #define AIRCRAFT_IPATH "assets/images/plane.png"
 

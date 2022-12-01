@@ -15,6 +15,12 @@
 #include "aircraft.h"
 #include "tower.h"
 
+static void Game_process(__UNUSED__ GameClass *this, SystemClass *system)
+{
+    for (size_t i = 0; i < len(system->_aircrafts); i++)
+        moveAircraft(getitem(system->_aircrafts, i));
+}
+
 static void Game_display(GameClass *this, SystemClass *system)
 {
     drawScene(this->_scene, this->_window);
@@ -30,7 +36,7 @@ static void Game_run(GameClass *this, SystemClass *system)
     while (isWindowOpen(this->_window)) {
         clearWindow(this->_window);
         handleEvents(this->_scene->_eventManager, system);
-        //process
+        processGame(this, system);
         displayGame(this, system);
     }
 }
@@ -71,8 +77,9 @@ static const GameClass _description = {
     ._scene = NULL,
     ._window = NULL,
     /* Methods definitions */
-    .__run__ = &Game_run,
-    .__display__ = &Game_display
+    .__display__ = &Game_display,
+    .__process__ = &Game_process,
+    .__run__ = &Game_run
 };
 
 const Class *Game = (const Class *)&_description;

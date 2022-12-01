@@ -8,11 +8,21 @@
 */
 
 #include <stdlib.h>
+#include <math.h>
 
 #include "new.h"
 
 #include "my.h"
 #include "aircraft.h"
+
+static void Aircraft_move(AircraftClass *this)
+{
+    // Update position
+    this->_pos.x += this->_dir.x * this->_speed;
+    this->_pos.y += this->_dir.y * this->_speed;
+    // Update image position
+    setImagePosition(this->base._image, this->_pos);
+}
 
 static void Aircraft_draw(IEntityClass *this, WindowClass* window)
 {
@@ -35,6 +45,12 @@ static void Aircraft_ctor(AircraftClass *this, va_list *args)
     this->_pos = this->_initPos;
     this->_speed = atol(data[5]);
     this->_delay = atol(data[6]);
+    // Compute direction
+    sfVector2f d = {this->_landingPos.x - this->_initPos.x,
+                    this->_landingPos.y - this->_initPos.y};
+    double u = sqrt(pow(d.x, 2) + pow(d.y, 2));
+
+    this->_dir = (sfVector2f){d.x / u, d.y / u};
 
     this->base._image = new(Image, AIRCRAFT_IPATH, this->_initPos, NULL);
 
@@ -73,9 +89,11 @@ static const AircraftClass _description = {
     ._initPos = {0, 0},
     ._landingPos = {0, 0},
     ._pos = {0, 0},
+    ._dir = {0, 0},
     ._speed = 0,
     ._delay = 0,
     /* Methods definitions */
+    .__move__ = &Aircraft_move
 };
 
 const Class *Aircraft = (const Class *)&_description;

@@ -26,13 +26,15 @@
         WindowClass*    _window;
 
         /* Methods definitions*/
-        void (*__run__)(struct s_GameClass*, SystemClass*);
         void (*__display__)(struct s_GameClass*, SystemClass*);
+        void (*__process__)(struct s_GameClass*, SystemClass*);
+        void (*__run__)(struct s_GameClass*, SystemClass*);
     } GameClass;
 
     extern const Class *Game;
 
-    #define runGame(r, s) ((GameClass*)r)->__run__(r, s)
-    #define displayGame(r, s) ((GameClass*)r)->__display__(r, s)
+    #define displayGame(r, s)   ((GameClass*)r)->__display__(r, s)
+    #define processGame(r, s)   ((GameClass*)r)->__process__(r, s)
+    #define runGame(r, s)       ((GameClass*)r)->__run__(r, s)
 
 #endif /* !GAME_H_ */
