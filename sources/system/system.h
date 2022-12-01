@@ -34,6 +34,11 @@
 
     extern const Class *System;
 
+    #define REFRESHTIME 100
+
+    #define ctime(s)    sfTime_asMilliseconds(sfClock_getElapsedTime(((SystemClass*)s)->_clock->clock))
+    #define refresh(s)  sfClock_restart(((SystemClass*)s)->_clock->clock)
+
     #define runSystem(r, ac, av) ((SystemClass*)r)->__run__(r, ac, av)
 
 #endif /* !SYSTEM_H_ */

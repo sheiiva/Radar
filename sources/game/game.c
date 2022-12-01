@@ -38,8 +38,11 @@ static void Game_run(GameClass *this, SystemClass *system)
     while (isWindowOpen(this->_window)) {
         clearWindow(this->_window);
         handleEvents(this->_scene->_eventManager, system);
-        processGame(this, system);
-        displayGame(this, system);
+        if (ctime(system) > REFRESHTIME) {
+            processGame(this, system);
+            displayGame(this, system);
+            refresh(system);
+        }
     }
 }
 
